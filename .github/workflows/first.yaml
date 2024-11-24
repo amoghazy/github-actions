@@ -1,10 +1,12 @@
 name: CID
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  # Disable workflow by commenting out triggers
+  # push:
+  #   branches: [main]
+  # pull_request:
+  #   branches: [main]
+  workflow_dispatch: # Only manual triggers allowed
 
 jobs:
   build:
