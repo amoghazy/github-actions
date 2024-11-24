@@ -16,16 +16,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: "3.x"
-
-      - name: Install dependencies
+      - name: run-script
         run: |
-          python -m pip install --upgrade pip
-          pip install cowsay
-
-      - name: Generate ASCII art
-        run: |
-          echo "Hello from GitHub Actions! 👋" | python -c "import cowsay; print(cowsay.tux(input()))" > ascii_art.txt
-
-      - name: Commit and push if changed
-        run: |
-          cat ascii_art.txt
+          chmod +x script.sh
+          ./script.sh
