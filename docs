@@ -1,0 +1,75 @@
+## Core Components in GitHub Actions
+
+1. Workflows:
+- YAML files in .github/workflows
+- Define automated processes
+- Triggered by events
+
+2. Events:
+- Repository activities that trigger workflows
+- Push, pull request, issue creation, etc.
+- Manual triggers (workflow_dispatch)
+
+3. Jobs:
+- Groups of steps that run on same runner
+- Can run in parallel or sequential order
+- Share data using artifacts
+
+4. Steps:
+- Individual tasks within jobs
+- Run commands or actions
+- Access shared workspace
+
+5. Actions:
+- Reusable workflow components
+- Custom code execution
+- Available in Marketplace
+
+6. Runners:
+- Servers that execute workflows
+- GitHub-hosted or self-hosted
+- Different OS environments
+
+7. Artifacts:
+- Files produced during workflow runs
+- Shared between jobs
+- Stored for later access
+
+# --------------------------------------------------------------------------------
+Actions in GitHub Actions are individual tasks or steps that you can combine to create jobs and workflows. They are the building blocks of your automation:
+
+Key aspects of actions:
+
+1. Reusable units of code:
+- Can be created by anyone
+- Shared and reused across workflows
+- Available in GitHub Marketplace
+
+2. Types of actions:
+- Docker container actions
+- JavaScript actions
+- Composite run steps actions
+
+3. Common uses:
+- Setting up build environments
+- Running test suites
+- Publishing packages
+- Deploying to cloud services
+- Automating code reviews
+- Managing issues/PRs
+
+4. Example action syntax:
+
+steps:
+  - uses: actions/checkout@v3
+  - uses: actions/setup-node@v3
+    with:
+      node-version: '14'
+
+
+5. Key features:
+- Input/output parameters
+- Environment variable access
+- Workspace file system access
+- GitHub API integration
+- Error handling and logging
