@@ -24,7 +24,7 @@ jobs:
 
       - name: Generate ASCII art
         run: |
-          echo "Hello from GitHub Actions!" | python -c "import cowsay; print(cowsay.cow(input()))" > ascii_art.txt
+          echo "Hello from GitHub Actions! 👋" | python -c "import cowsay; print(cowsay.tux(input()))" > ascii_art.txt
 
       - name: Commit and push if changed
         run: |

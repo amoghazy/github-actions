@@ -95,12 +95,10 @@ when use actions in github actions it downloads to the runner first and then exe
 
 // To run multiple commands
 use pipe
-  run: |
-    echo "Starting multi-line script"
-    echo "Line 1"
+run: |
+echo "Starting multi-line script"
+echo "Line 1"
 
 use third party library like cowsay
-must install it first 
-and if u want to disable workflow can make it in github and disable it
-
-
+must install it first
+and if u want to disable workflow can make it in github and disable it.
