@@ -1,8 +1,6 @@
 name: Environment Variables
 
 on:
-  push:
-    # branches: [main]
   workflow_dispatch: # Only manual triggers allowed
 
 env:
