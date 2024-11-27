@@ -1,0 +1,13 @@
+name: Events Workflow Demo
+
+on:
+  schedule:
+    - cron: "*/1 */1 * * *"
+jobs:
+  demo-repo-secrets:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: test-Events
+        run: |
+          echo "Hello World"
