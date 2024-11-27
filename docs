@@ -172,5 +172,103 @@ secret is stored in encrypted form.
 
 to use secret ${{ secrets.SECRET_NAME }}
 to use repository Variables {{vars.VAR_NAME}}
--------------------------------------------------------------------------------------------------------------
-#### Events Triggering Workflows ####
+
+---
+
+#### Events Triggering Workflows
+
+## on:
+
+## push:
+
+schedule:
+
+- ## cron: "_/15 _ \* \* \* " # every 15 minutes at least
+
+---
+
+to run manually
+workflow_dispatch:
+
+---
+
+#### Concurrency
+
+Concurrency in GitHub Actions allows you to manage and control parallel job execution.
+
+concurrency:
+group: ${{ github.workflow }}-${{ github.ref }} # <group name>
+cancel-in-progress: true # cancels in-progress jobs or runs in the same concurrency group
+if false, it will run jobs not cancel them but after the job is done it will run the next job.
+
+# Example usage in a workflow:
+
+name: Build
+on: push
+concurrency:
+group: build-${{ github.ref }}
+cancel-in-progress: true
+jobs:
+build:
+runs-on: ubuntu-latest
+steps: - uses: actions/checkout@v2
+
+# Benefits:
+
+# - Prevents simultaneous deployments
+
+# - Saves resources by cancelling redundant runs
+
+# - Ensures sequential execution when needed
+
+# - Useful for deployment jobs to prevent conflicts
+
+# Can be specified at:
+
+# - Workflow level
+
+# - Job level
+
+# - Using different group names for different concurrency requirements
+
+---
+
+### Timeouts
+
+allow you to set a maximum duration for a job or step to run.
+add this option to job or step
+
+### timeout-minutes: < number of minutes>
+
+# - Can be set at:
+
+# - Workflow level
+
+# - Job level
+
+# - Step level
+
+++++++++++++++++++++++++++++++++++++++++++++++++==
+
+## MATRIX ### ---------------------------------------
+
+# - Allows running a job multiple times with different configurations
+
+<!-- can use same job to run in diff OS or diff versions of node.js or diff versions of os -->
+
+we can use this strategy
+
+<!-- jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [14.x, 16.x, 18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+-->

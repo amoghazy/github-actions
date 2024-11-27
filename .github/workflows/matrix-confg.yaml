@@ -1,0 +1,16 @@
+name: Matrix Configuration
+
+on:
+  push:
+jobs:
+  deploy:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        images: [hello-world, alpine]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: echo "Hello ${{ matrix.images }} on ${{ matrix.os }}"
+      - name: Run Docker image
+        run: |
+          docker run ${{ matrix.images }}
