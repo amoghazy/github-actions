@@ -1,8 +1,7 @@
 name: Events Workflow Demo
 
 on:
-  schedule:
-    - cron: "*/15 * * * *"
+
   push:
     branches:
       - main
