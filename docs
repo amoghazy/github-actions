@@ -102,3 +102,15 @@ echo "Line 1"
 use third party library like cowsay
 must install it first
 and if u want to disable workflow can make it in github and disable it.
+
+--------
+###multiple jobs
+we can run multiple jobs in parallel or sequentially.
+default is to run in parallel.
+how to run in sequence?
+use needs: 
+needs: [build, test] or needs: build 
+take the name of the job. 
+=----------
+because of every job i running in different runner, we can't share data between jobs.
+so we use artifact to share data between jobs.
