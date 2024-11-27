@@ -154,3 +154,21 @@ on: push
 env:
 USER: "GITHUB_USER"
 jobs:
+
+in env variable the password or sensitive data is stored in plain text.
+so we can use secrets to store sensitive data.
+
+<!-- #### secrets ####-->
+
+secrets are stored in github.
+can uses in level of repository, organization, user.
+
+## <!-- #### secrets ####-->
+
+can use secrets in env variable. and access it at repo level if u need to use it in multiple workflows.
+
+to add secret we make new secret in github.
+secret is stored in encrypted form.
+
+to use secret ${{ secrets.SECRET_NAME }}
+to use repository Variables {{vars.VAR_NAME}}

@@ -2,9 +2,8 @@ name: Environment Variables
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    # branches: [main]
+  workflow_dispatch: # Only manual triggers allowed
 
 env:
   GLOBAL_VAR: "This is a global variable"
