@@ -3,6 +3,9 @@ name: Events Workflow Demo
 on:
   schedule:
     - cron: "*/1 * * * *"
+  push:
+    branches:
+      - main
 jobs:
   demo-repo-secrets:
     runs-on: ubuntu-latest
