@@ -103,17 +103,54 @@ use third party library like cowsay
 must install it first
 and if u want to disable workflow can make it in github and disable it.
 
---------
+---
+
 ###multiple jobs
 we can run multiple jobs in parallel or sequentially.
 default is to run in parallel.
 how to run in sequence?
-use needs: 
-needs: [build, test] or needs: build 
-take the name of the job. 
+use needs:
+needs: [build, test] or needs: build
+take the name of the job.
 =----------
 because of every job i running in different runner, we can't share data between jobs.
 so we use artifact to share data between jobs.
 use actions artifact upload and actions artifact download
 store in github for 90 days.by default.
-------------------------
+
+---
+
+in github actions we can use environment variables to store sensitive data like password, api key, etc.
+we can use environment variables at different levels like job, workflow, repository, steps etc.
+
+## steps
+
+every step add env property
+env:
+USER: "GITHUB_USER"
+run: echo $USER # another way to use env variable is ${{ env.USER }}
+
+<!-- we use in the same step -->
+
+this is not efficient way to use env variable.
+
+---
+
+## at job level
+
+add env property to job
+
+jobs:
+build:
+env:
+USER: "GITHUB_USER"
+steps: - run: echo $USER
+
+## <!-- but this is not efficient way to use env variable also because we have to add env property to every job. -->
+
+## at workflow level
+
+on: push
+env:
+USER: "GITHUB_USER"
+jobs:

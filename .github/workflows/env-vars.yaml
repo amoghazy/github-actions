@@ -1,0 +1,39 @@
+name: Environment Variables
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  GLOBAL_VAR: "This is a global variable"
+  SERVER_URL: "https://api.example.com"
+
+jobs:
+  test-env-vars:
+    runs-on: ubuntu-latest
+
+    env:
+      JOB_VAR: "This is a job-level variable"
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Print Environment Variables
+        env:
+          STEP_VAR: "This is a step-level variable"
+        run: |
+          echo "Global var: ${{ env.GLOBAL_VAR }}"
+          echo "Server URL: ${{ env.SERVER_URL }}"
+          echo "Job var: ${{ env.JOB_VAR }}"
+          echo "Step var: ${{ env.STEP_VAR }}"
+  steps-test2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Environment Variables
+        env:
+          STEP_VAR: "This is a step-level variable"
+        run: |
+          echo "Global var: ${{ env.GLOBAL_VAR }}"
+          echo "Server URL: ${{ env.SERVER_URL }}"
