@@ -5,9 +5,17 @@ on:
 jobs:
   deploy:
     strategy:
+      max-parallel: 2
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
         images: [hello-world, alpine]
+        exclude:
+          - os: windows-latest
+            images: alpine
+        include:
+          - os: ubuntu-latest
+            images: nginx
     runs-on: ${{ matrix.os }}
     steps:
       - run: echo "Hello ${{ matrix.images }} on ${{ matrix.os }}"

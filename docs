@@ -272,3 +272,11 @@ we can use this strategy
           node-version: ${{ matrix.node-version }}
       - run: npm install
 -->
+
+if one of the job fails, it will not run the other jobs. and mark the workflow as failed.
+
+<!-- ## Additional configuration Matrix -->
+<!-- - max-parallel: < number of jobs to run in parallel > -->
+ fail-fast: true --> <!-- if one of the job fails, it will not run the other jobs. and mark the workflow as failed. 
+<!-- include: - to include specific configurations like run on windows -->
+<!-- exclude: - to exclude specific configurations like don't run on windows -->

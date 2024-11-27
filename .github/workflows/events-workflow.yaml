@@ -1,14 +1,7 @@
 name: Events Workflow Demo
 
 on:
-<<<<<<< HEAD
-
-  push:
-    branches:
-      - main
-=======
   workflow_dispatch:
->>>>>>> 2371ec8 (matrix strategy)
 jobs:
   demo-repo-secrets:
     runs-on: ubuntu-latest
