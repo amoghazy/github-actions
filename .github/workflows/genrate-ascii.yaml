@@ -30,6 +30,7 @@ jobs:
           echo "Hello World"
           python --version
           ls -al
+          pwd
           cat ascii_art.txt
   deploy:
     needs: test
