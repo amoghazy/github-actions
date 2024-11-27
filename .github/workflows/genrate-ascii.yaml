@@ -6,25 +6,38 @@ on:
     branches: [main]
 
 jobs:
-  generate:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.x"
       - name: run-script
         run: |
           chmod +x script.sh
           ./script.sh
-  job2:
-    needs: generate
+      - uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: ascii_art.txt
+  test:
+    needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: my-artifact
       - name: test-command
         run: |
           echo "Hello World"
           python --version
+          cat ascii_art.txt
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: my-artifact
+      - name: deploy-command
+        run: |
+          echo "Deploying"
+          grep "GitHub" ascii_art.txt
