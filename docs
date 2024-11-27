@@ -172,3 +172,5 @@ secret is stored in encrypted form.
 
 to use secret ${{ secrets.SECRET_NAME }}
 to use repository Variables {{vars.VAR_NAME}}
+-------------------------------------------------------------------------------------------------------------
+#### Events Triggering Workflows ####
