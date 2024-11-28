@@ -25,6 +25,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # mean  while the pull_request event is expression work
     if: github.event.pull_request.draft == false
     steps:
       - uses: actions/checkout@v3

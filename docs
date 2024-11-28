@@ -320,3 +320,9 @@ like that not every event is activity type.
 # - Example: Run workflow only on pull request events
 
 # - Example: Run workflow only on push events to specific branches
+
+---
+
+##########Cancelling and Skipping Workflows
+we can cancel workflow by using specified commit message.
+[skip ci] - [ci skip] - [skip actions] etc.
