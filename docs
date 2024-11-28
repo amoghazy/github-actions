@@ -277,6 +277,46 @@ if one of the job fails, it will not run the other jobs. and mark the workflow a
 
 <!-- ## Additional configuration Matrix -->
 <!-- - max-parallel: < number of jobs to run in parallel > -->
- fail-fast: true --> <!-- if one of the job fails, it will not run the other jobs. and mark the workflow as failed. 
+
+fail-fast: true --> <!-- if one of the job fails, it will not run the other jobs. and mark the workflow as failed.
+
 <!-- include: - to include specific configurations like run on windows -->
-<!-- exclude: - to exclude specific configurations like don't run on windows -->
+
+## <!-- exclude: - to exclude specific configurations like don't run on windows -->
+
+## Contexts
+
+# - Provide access to information about the workflow run, job, and step
+
+# - Useful for dynamic configuration
+
+example
+
+<!-- jobs:
+  test-context:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Use context
+       env:
+       GITHUB_CONTEXT: ${{ toJSON(github) }}
+       run: echo $GITHUB_CONTEXT -->
+
+## and we can use this context in runner and secrets .
+
+use expressions to use context in runner and secrets
+
+if need job to run only on specific branch then use this
+
+if: ${{ github.ref == 'refs/heads/main' }}
+
+################ Workflow Event Filters and Activity Types ##########
+activity like when pull request activity is pulled assigned unassigned closed edited labeled unlabeled unlocked
+like that not every event is activity type.
+
+# - Can filter workflows based on specific events
+
+# - Useful for specific actions
+
+# - Example: Run workflow only on pull request events
+
+# - Example: Run workflow only on push events to specific branches
